@@ -25,7 +25,6 @@ backend/.env
 # 注意：必须锚定根目录(/models/ /tools/)，否则会误伤 backend/app/models/（项目源码）
 # 与 rtmlib/tools/（随仓库分发的 rtmlib 源码模块）
 /models/
-/tools/
 
 # rtmlib 已随仓库分发（vendor，仅 ~400KB），不入 ignore
 
