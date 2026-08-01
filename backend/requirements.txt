@@ -1,0 +1,28 @@
+# SpriteFrameService backend dependencies
+# Python 3.11 - 3.13 recommended
+
+# Web framework
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+aiofiles>=24.1
+pydantic>=2.7
+pydantic-settings>=2.3
+
+# Scientific / image processing
+numpy>=1.26
+opencv-python-headless>=4.9
+Pillow>=10.3
+
+# Inference
+onnxruntime>=1.18
+
+# AI background removal (pulls onnxruntime CPU by default;
+# on a GPU server install onnxruntime-gpu instead, see README)
+rembg>=2.0
+
+# Pose detection (MediaPipe). If no wheel for your Python version,
+# fall back to a Python 3.11 conda env (see README).
+mediapipe>=0.10
+# NOTE: RTMPose 需要原项目同款本地 rtmlib 目录（非 PyPI 同名包），
+# 部署时将 rtmlib/ 放在项目根目录即可（pose_detector 自动加载）。

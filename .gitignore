@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# 日志
+*.log
+
+# 运行时数据（任意层级，含 backend/data）
+data/
+
+# 前端构建产物
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# 环境配置（.env.example 保留入库）
+.env
+backend/.env
+
+# 模型与工具（仅根目录；体积大/二进制，不入库；部署时单独放置）
+# 注意：必须锚定根目录(/models/ /tools/)，否则会误伤 backend/app/models/（项目源码）
+# 与 rtmlib/tools/（随仓库分发的 rtmlib 源码模块）
+/models/
+/tools/
+
+# rtmlib 已随仓库分发（vendor，仅 ~400KB），不入 ignore
+
+# 编辑器/系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

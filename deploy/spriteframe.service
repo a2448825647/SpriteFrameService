@@ -1,0 +1,28 @@
+# SpriteFrameService systemd 服务单元模板
+# 用法：
+#   1. 按 README 完成初始化（scripts/setup_linux.sh），得到项目绝对路径（记作 /opt/spriteframe）
+#   2. 将本文件放到 /etc/systemd/system/spriteframe.service，并修改下方路径
+#   3. systemctl daemon-reload && systemctl enable --now spriteframe
+#
+# 可选：用 nginx 反代 + 静态托管（见 README 末尾）。
+
+[Unit]
+Description=SpriteFrameService (精灵帧服务)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/spriteframe/backend
+EnvironmentFile=/opt/spriteframe/backend/.env
+ExecStart=/opt/spriteframe/.venv/bin/python /opt/spriteframe/backend/run.py --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=3
+
+# 安全加固（可选）
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=false
+ReadWritePaths=/opt/spriteframe/data
+
+[Install]
+WantedBy=multi-user.target
